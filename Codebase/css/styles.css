@@ -1,0 +1,57 @@
+body {
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    text-align: center;
+    min-height: 50px;
+    align-self: flex-end;
+}
+
+nav {
+    display: flex;
+    min-height: 25px;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.response {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    min-height: 600px;
+}
+
+section {
+    width: 100px;
+    border-radius: 10px;
+    background-color: aqua;
+    margin: 5px;
+    text-align: center;
+    line-height: 100px;
+    flex-grow: 1;
+  }
+
+.gameboard {
+    min-width: 500px
+  }
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+}
