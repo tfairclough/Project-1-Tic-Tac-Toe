@@ -28,19 +28,14 @@ button {
     max-height: 25px;
 }
 
-.response {
-    display: flex;
-    justify-content: center;
-}
-
 main {
     display: flex;
     justify-content: space-around;
-    min-height: 600px;
+    min-height: 700px;
 }
 
-section {
-    width: 100px;
+.playarea {
+    min-width: 100px;
     border-radius: 10px;
     background-color: aqua;
     margin: 5px;
@@ -56,17 +51,20 @@ section {
 .gameboard {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, minmax(75px, 150px));
+    grid-template-rows: repeat(3, minmax(75px, 150px));
+    gap: 2px;
     
 }
 
 .gametile {
+    background-color: rgb(255, 255, 255);
 }
-
 
 footer {
     display: flex;
     justify-content: center;
-    min-height: 100px;
+    align-items: center;
+    min-height: 50px;
+    background-color: rgb(167, 167, 167);
 }
