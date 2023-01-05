@@ -18,10 +18,14 @@ header h1 {
 
 nav {
     display: flex;
-    min-height: 25px;
+    min-height: 50px;
     flex-direction: row;
     justify-content: space-around;
     list-style-type: none;
+}
+
+button {
+    max-height: 25px;
 }
 
 .response {
@@ -45,9 +49,20 @@ section {
     flex-grow: 1;
   }
 
-.gameboard {
-    min-width: 500px
+.game {
+    min-width: 500px;
   }
+
+.gameboard {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    
+}
+
+.gametile {
+}
 
 
 footer {
