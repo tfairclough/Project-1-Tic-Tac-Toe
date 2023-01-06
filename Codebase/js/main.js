@@ -4,10 +4,10 @@
     // Tracks and Alternates who goes first
     // resets tiles that can be clicked
 
-document.querySelector("#newGameButton").addEventListener('click', resetScores)
+document.querySelector("#newGameButton").addEventListener('click', newGame)
 
-function resetScores() {
-    log('linked')
+function newGame() {
+    document.querySelectorAll(".gametile").forEach(tile => tile.innerHTML = '')
 }
 
 // Reset Scores
@@ -36,25 +36,39 @@ document.querySelectorAll(".gametile").forEach(tile => tile.addEventListener('cl
 function tileClicked(e) {
     if (e.target.innerHTML === '')
         updateTileValue(e)
+
+        respondToPlayer()
     
 
 }
 
 
 
+function respondToPlayer() {
+    updateResponse('OK')
+}
+
+function updateResponse(response) {
+    document.querySelector("#responseToPlayer").innerHTML  = response
+}
+
 // Must be a better way to toggle between players
 function updateTileValue(e) {
+
     let gameboardPlayer = document.querySelector(".gameboard")
 
     if (gameboardPlayer.getAttribute('player') === '1') {
         e.target.innerHTML = 'X'
         gameboardPlayer.setAttribute("player", 0)
+
     } else {
         log('hi')
         e.target.innerHTML = 'O'
         gameboardPlayer.setAttribute("player", 1)
     }
 }
+
+
 
 function log(input) {
     console.log(input)
