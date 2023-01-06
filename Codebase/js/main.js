@@ -20,4 +20,4 @@
     // Check win condition
         // Check all possible three directions for same matches
     // Update Response to indicate player turn
-    // If there have been 9 turns, declare tie
+    // If there have been 9 turns and no winner, declare tie
