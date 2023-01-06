@@ -22,10 +22,7 @@ newGameButton.addEventListener('click', newGame)
 gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
 
 
-
-
-
-
+// Need to track player who went first and chnage it on new game
 function newGame() {
     gameTiles.forEach(tile => tile.innerHTML = '')
     updateResponse("")
@@ -40,26 +37,40 @@ function resetScores() {
 
 
 function tileClicked(e) {
-    if (gameBoard.getAttribute("gamestate")=== "active")
-        if (e.target.innerHTML === '') {
-            updateTileValue(e)
+    if ((gameBoard.getAttribute("gamestate")=== "active") && (e.target.innerHTML === '')) {
+        updateTileValue(e)
+
+        let gameState = checkGameState()
+        if (gameState === 'Winner') {
+            
+        } else if (gameState === 'Draw') {
+
+        } else {
             changePlayer()
-            let gameState = checkGameState()
-            updateResponse(gameState)
+        }
+        updateResponse(gameState)
+            
         }
 }
 
 function checkGameState() {
     let currentGameBoard = [...gameTiles].map(tile => tile.innerHTML)
-    if (winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))) {
-        return 'Winner'
-    } else if ((currentGameBoard.every((tile) => tile !== ''))) {
-        return 'Draw' 
-    } else {
-        return 'Next turn'
+
+    return winConditionMet(currentGameBoard) ? "Winner"
+        : drawConditionMet(currentGameBoard) ? "Draw"
+        : "Next turn"
     }
 
+
+function drawConditionMet(currentGameBoard) {
+    return currentGameBoard.every((tile) => tile !== '')
 }
+
+
+function winConditionMet(currentGameBoard) {
+    return winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))
+}
+
 
 function allEqualAndNotBlank(arr) {
     return arr.every(val => val === arr[0] && val !== '');
