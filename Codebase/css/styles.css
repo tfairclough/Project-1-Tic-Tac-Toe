@@ -54,13 +54,14 @@ main {
     justify-content: center;
     grid-template-columns: repeat(3, minmax(75px, 150px));
     grid-template-rows: repeat(3, minmax(75px, 150px));
-    gap: 2px;
+    gap: 5px;
     
 }
 
 .gametile {
     background-color: rgb(255, 255, 255);
     line-height: 150px;
+    font-size: 120px;
 }
 
 footer {

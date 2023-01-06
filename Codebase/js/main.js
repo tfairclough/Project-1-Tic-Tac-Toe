@@ -7,7 +7,7 @@
 document.querySelector("#newGameButton").addEventListener('click', resetScores)
 
 function resetScores() {
-    console.log('linked')
+    log('linked')
 }
 
 // Reset Scores
@@ -17,9 +17,12 @@ function resetScores() {
 document.querySelector("#resetScoresButton").addEventListener('click', resetScores)
 
 function resetScores() {
-    console.log('linked2')
+    log('linked2')
 }
+
 // BoardGame
+
+document.querySelectorAll(".gametile").forEach(tile => tile.addEventListener('click', tileClicked))
     // Event listener on each tile 
     // Alteternates what character is added to the tile
     // Cannot click a till that is already clicked/contains a charcter until reset
@@ -29,3 +32,30 @@ function resetScores() {
         // Check all possible three directions for same matches
     // Update Response to indicate player turn
     // If there have been 9 turns and no winner, declare tie
+
+function tileClicked(e) {
+    if (e.target.innerHTML === '')
+        updateTileValue(e)
+    
+
+}
+
+
+
+// Must be a better way to toggle between players
+function updateTileValue(e) {
+    let gameboardPlayer = document.querySelector(".gameboard")
+
+    if (gameboardPlayer.getAttribute('player') === '1') {
+        e.target.innerHTML = 'X'
+        gameboardPlayer.setAttribute("player", 0)
+    } else {
+        log('hi')
+        e.target.innerHTML = 'O'
+        gameboardPlayer.setAttribute("player", 1)
+    }
+}
+
+function log(input) {
+    console.log(input)
+}
