@@ -4,6 +4,8 @@
     // Tracks and Alternates who goes first
     // resets tiles that can be clicked
 
+const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,5,8],[2,4,6]]
+
 document.querySelector("#newGameButton").addEventListener('click', newGame)
 
 function newGame() {
@@ -37,12 +39,18 @@ document.querySelectorAll(".gametile").forEach(tile => tile.addEventListener('cl
 function tileClicked(e) {
     if (e.target.innerHTML === '')
         updateTileValue(e)
-        respondToPlayer()
-    
+        let gameState = checkWinCondition()
+}
+
+function checkWinCondition() {
+    let currentGameBoard = [...document.querySelectorAll(".gametile")].map(tile => tile.innerHTML)
+    return winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))
 
 }
 
-
+function allEqualAndNotBlank(arr) {
+    return arr.every(val => val === arr[0] && val !== '');
+}
 
 function respondToPlayer() {
     let repsonse = chooseResponse()
@@ -53,12 +61,11 @@ function updateResponse(response) {
     document.querySelector("#responseToPlayer").innerHTML  = response
 }
 
-// Must be a better way to toggle between players
+
 function updateTileValue(e) {
         e.target.innerHTML = document.querySelector(".gameboard").getAttribute("player")
         changePlayer()
 }
-
 
 
 function changePlayer() {
