@@ -8,6 +8,7 @@ document.querySelector("#newGameButton").addEventListener('click', newGame)
 
 function newGame() {
     document.querySelectorAll(".gametile").forEach(tile => tile.innerHTML = '')
+    updateResponse("")
 }
 
 // Reset Scores
@@ -36,7 +37,6 @@ document.querySelectorAll(".gametile").forEach(tile => tile.addEventListener('cl
 function tileClicked(e) {
     if (e.target.innerHTML === '')
         updateTileValue(e)
-
         respondToPlayer()
     
 
@@ -45,6 +45,7 @@ function tileClicked(e) {
 
 
 function respondToPlayer() {
+    let repsonse = chooseResponse()
     updateResponse('OK')
 }
 
@@ -54,22 +55,24 @@ function updateResponse(response) {
 
 // Must be a better way to toggle between players
 function updateTileValue(e) {
-
-    let gameboardPlayer = document.querySelector(".gameboard")
-
-    if (gameboardPlayer.getAttribute('player') === '1') {
-        e.target.innerHTML = 'X'
-        gameboardPlayer.setAttribute("player", 0)
-
-    } else {
-        log('hi')
-        e.target.innerHTML = 'O'
-        gameboardPlayer.setAttribute("player", 1)
-    }
+        e.target.innerHTML = document.querySelector(".gameboard").getAttribute("player")
+        changePlayer()
 }
 
 
 
+function changePlayer() {
+    let gameboardPlayer =  document.querySelector(".gameboard")
+    if (gameboardPlayer.getAttribute('player') === 'X') {
+        gameboardPlayer.setAttribute("player", 'O')
+    } else {
+        gameboardPlayer.setAttribute("player", 'X')
+    }
+
+}
+
+
+// Helper Functions
 function log(input) {
     console.log(input)
 }

@@ -71,3 +71,8 @@ footer {
     min-height: 50px;
     background-color: rgb(167, 167, 167);
 }
+
+#responseToPlayer {
+    line-height: 100px;
+    min-height: 100px;
+}
