@@ -4,6 +4,8 @@ const newGameButton = document.querySelector("#newGameButton")
 const gameBoard = document.querySelector("#gameboard")
 const gameTiles = document.querySelectorAll(".gametile")
 const responseToPlayer = document.querySelector("#responseToPlayer")
+const tieCounter = document.querySelector(`#Tie`)
+const scoreCounters = document.querySelectorAll(".scoreCounter")
 
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -22,7 +24,7 @@ function newGame() {
 
 
 function resetScores() {
-    [...document.querySelectorAll(".scoreCounter")].forEach(score => score.innerHTML = 0)
+    [...scoreCounters].forEach(score => score.innerHTML = 0)
 }
 
 
@@ -44,7 +46,7 @@ function updateScores(result) {
     if (result === "Winner") {
         +document.querySelector(`#${gameBoard.getAttribute('player')}`).innerHTML++
     } else {
-        +document.querySelector(`#Tie`).innerHTML++
+        +tieCounter.innerHTML++
     }
 }
 
