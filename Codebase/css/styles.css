@@ -38,7 +38,6 @@ main {
 .playarea {
     min-width: 100px;
     border-radius: 10px;
-    background-color: aqua;
     margin: 5px;
     text-align: center;
     line-height: 100px;
@@ -46,6 +45,7 @@ main {
   }
 
 .game {
+    background-color:salmon;
     min-width: 500px;
   }
 
@@ -75,4 +75,13 @@ footer {
 #responseToPlayer {
     line-height: 100px;
     min-height: 100px;
+}
+
+.scorecounter {
+    flex-grow: 1;
+    background-color: bisque;
+    margin: 5px;
+    padding: 0px 30px;
+    text-align: left;
+    border-radius: 5px;
 }

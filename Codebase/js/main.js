@@ -25,6 +25,7 @@ gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
 // Need to track player who went first and chnage it on new game
 function newGame() {
     gameTiles.forEach(tile => tile.innerHTML = '')
+    toggleBoardActive('on')
     updateResponse("")
 }
 
@@ -37,14 +38,14 @@ function resetScores() {
 
 
 function tileClicked(e) {
-    if ((gameBoard.getAttribute("gamestate")=== "active") && (e.target.innerHTML === '')) {
+    if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
         updateTileValue(e)
 
         let gameState = checkGameState()
         if (gameState === 'Winner') {
-            
+            toggleBoardActive('off')
         } else if (gameState === 'Draw') {
-
+            toggleBoardActive('off')
         } else {
             changePlayer()
         }
@@ -53,9 +54,9 @@ function tileClicked(e) {
         }
 }
 
+
 function checkGameState() {
     let currentGameBoard = [...gameTiles].map(tile => tile.innerHTML)
-
     return winConditionMet(currentGameBoard) ? "Winner"
         : drawConditionMet(currentGameBoard) ? "Draw"
         : "Next turn"
@@ -86,6 +87,11 @@ function updateTileValue(e) {
     e.target.innerHTML = gameBoard.getAttribute("player")
 }
 
+
+function toggleBoardActive(status) {
+    gameBoard.setAttribute("gamestate", `${status}`)
+
+}
 
 function changePlayer() {
     if (gameBoard.getAttribute('player') === 'X') {
