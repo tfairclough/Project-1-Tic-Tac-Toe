@@ -4,7 +4,12 @@
     // Tracks and Alternates who goes first
     // resets tiles that can be clicked
 
+document.querySelector("#resetbutton").addEventListener('click', resetGame)
 
+
+function resetGame() {
+    console.log('linked')
+}
 
 // Reset Scores
     // Button with event listener to reset the player scores
