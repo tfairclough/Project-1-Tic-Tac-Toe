@@ -4,10 +4,9 @@
     // Tracks and Alternates who goes first
     // resets tiles that can be clicked
 
-document.querySelector("#resetbutton").addEventListener('click', resetGame)
+document.querySelector("#newGameButton").addEventListener('click', resetScores)
 
-
-function resetGame() {
+function resetScores() {
     console.log('linked')
 }
 
@@ -15,7 +14,11 @@ function resetGame() {
     // Button with event listener to reset the player scores
     // Set wins/loses/ties to zero 
 
+document.querySelector("#resetScoresButton").addEventListener('click', resetScores)
 
+function resetScores() {
+    console.log('linked2')
+}
 // BoardGame
     // Event listener on each tile 
     // Alteternates what character is added to the tile
