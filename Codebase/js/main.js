@@ -1,22 +1,33 @@
 
 
-class gameBoard {
+class game{
     constructor() {
 
     }
 }
 
+// Common Selectors
+const resetScoresButton = document.querySelector("#resetScoresButton")
+const newGameButton = document.querySelector("#newGameButton")
+const gameBoard = document.querySelector("#gameboard")
+const gameTiles = document.querySelectorAll(".gametile")
+const responseToPlayer = document.querySelector("#responseToPlayer")
+
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
 // Event Listeners
-document.querySelector("#resetScoresButton").addEventListener('click', resetScores)
-document.querySelectorAll(".gametile").forEach(tile => tile.addEventListener('click', tileClicked))
-document.querySelector("#newGameButton").addEventListener('click', newGame)
+resetScoresButton.addEventListener('click', resetScores)
+newGameButton.addEventListener('click', newGame)
+gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
+
+
+
+
 
 
 function newGame() {
-    document.querySelectorAll(".gametile").forEach(tile => tile.innerHTML = '')
+    gameTiles.forEach(tile => tile.innerHTML = '')
     updateResponse("")
 }
 
@@ -29,16 +40,17 @@ function resetScores() {
 
 
 function tileClicked(e) {
-    if (e.target.innerHTML === '') {
-        updateTileValue(e)
-        changePlayer()
-        let gameState = checkGameState()
-        updateResponse(gameState)
-    }
+    if (gameBoard.getAttribute("gamestate")=== "active")
+        if (e.target.innerHTML === '') {
+            updateTileValue(e)
+            changePlayer()
+            let gameState = checkGameState()
+            updateResponse(gameState)
+        }
 }
 
 function checkGameState() {
-    let currentGameBoard = [...document.querySelectorAll(".gametile")].map(tile => tile.innerHTML)
+    let currentGameBoard = [...gameTiles].map(tile => tile.innerHTML)
     if (winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))) {
         return 'Winner'
     } else if ((currentGameBoard.every((tile) => tile !== ''))) {
@@ -55,21 +67,20 @@ function allEqualAndNotBlank(arr) {
 
 
 function updateResponse(response) {
-    document.querySelector("#responseToPlayer").innerHTML  = response
+    responseToPlayer.innerHTML  = response
 }
 
 
 function updateTileValue(e) {
-    e.target.innerHTML = document.querySelector(".gameboard").getAttribute("player")
+    e.target.innerHTML = gameBoard.getAttribute("player")
 }
 
 
 function changePlayer() {
-    let gameboardPlayer =  document.querySelector(".gameboard")
-    if (gameboardPlayer.getAttribute('player') === 'X') {
-        gameboardPlayer.setAttribute("player", 'O')
+    if (gameBoard.getAttribute('player') === 'X') {
+        gameBoard.setAttribute("player", 'O')
     } else {
-        gameboardPlayer.setAttribute("player", 'X')
+        gameBoard.setAttribute("player", 'X')
     }
 
 }

@@ -49,7 +49,7 @@ main {
     min-width: 500px;
   }
 
-.gameboard {
+#gameboard {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, minmax(75px, 150px));
