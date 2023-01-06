@@ -1,11 +1,3 @@
-
-
-class game{
-    constructor() {
-
-    }
-}
-
 // Common Selectors
 const resetScoresButton = document.querySelector("#resetScoresButton")
 const newGameButton = document.querySelector("#newGameButton")
@@ -24,44 +16,49 @@ gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
 
 // Need to track player who went first and chnage it on new game
 function newGame() {
-    gameTiles.forEach(tile => tile.innerHTML = '')
-    toggleBoardActive('on')
+    resetBoard()
     updateResponse("")
 }
 
+
 function resetScores() {
-    log('linked2')
+    [...document.querySelectorAll(".scoreCounter")].forEach(score => score.innerHTML = 0)
 }
-
-
-
 
 
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
         updateTileValue(e)
-
         let gameState = checkGameState()
-        if (gameState === 'Winner') {
+        updateResponse(gameState)
+        if ((gameState === 'Winner') || (gameState === 'Tie')) {
             toggleBoardActive('off')
-        } else if (gameState === 'Draw') {
-            toggleBoardActive('off')
+            updateScores(gameState)
         } else {
             changePlayer()
         }
-        updateResponse(gameState)
-            
-        }
+    }
 }
 
+function updateScores(result) {
+    if (result === "Winner") {
+        +document.querySelector(`#${gameBoard.getAttribute('player')}`).innerHTML++
+    } else {
+        +document.querySelector(`#Tie`).innerHTML++
+    }
+}
 
 function checkGameState() {
     let currentGameBoard = [...gameTiles].map(tile => tile.innerHTML)
     return winConditionMet(currentGameBoard) ? "Winner"
-        : drawConditionMet(currentGameBoard) ? "Draw"
-        : "Next turn"
-    }
+    : drawConditionMet(currentGameBoard) ? "Tie"
+    : `Player ${gameBoard.getAttribute('player')} turn`
+}
 
+function resetBoard() {
+    gameTiles.forEach(tile => tile.innerHTML = '')
+    toggleBoardActive('on')
+}
 
 function drawConditionMet(currentGameBoard) {
     return currentGameBoard.every((tile) => tile !== '')

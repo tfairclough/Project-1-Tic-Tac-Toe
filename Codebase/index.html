@@ -18,7 +18,7 @@
     <main>
         <section class="playersinfo playarea"><h3>Players</h3></section>
         <section class="game playarea">
-            <div id="responseToPlayer">Response</div>
+            <div id="responseToPlayer"></div>
             <div id="gameboard" player="X" gamestate="on">
                 <div class="gametile" id="tile1"></div>
                 <div class="gametile" id="tile2"></div>
@@ -34,9 +34,18 @@
         </section>
         <section class="scores playarea">
             <h3>Scores</h3>
-            <div class="scorecounter">X:</div>
-            <div class="scorecounter">O:</div>
-            <div class="scorecounter">Tie: </div>
+            <div class="scoreTag">
+                <h4>X:</h4>
+                <div class="scoreCounter" id="X">0</div>
+            </div>
+            <div class="scoreTag">
+                <h4>O:</h4>
+                <div class="scoreCounter" id="O">0</div>
+            </div>
+            <div class="scoreTag">
+                <h4>Tie:</h4>
+                <div class="scoreCounter" id="Tie">0</div>
+            </div>
         </section>
     </main>
     <footer>Footer</footer>
