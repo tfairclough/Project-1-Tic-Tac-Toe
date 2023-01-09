@@ -9,6 +9,7 @@ const scoreCounters = document.querySelectorAll(".scoreCounter")
 
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+let successClick = new Audio('../zapsplat_multimedia_button_click_004_68776.mp3')
 
 // Event Listeners
 resetScoresButton.addEventListener('click', resetScores)
@@ -35,6 +36,7 @@ function resetScores() {
 //4. Change Player
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
+        playSucessfulClickSound()
         updateTileValue(e)
         changePlayer()
         checkTurnResult()       
@@ -115,6 +117,10 @@ function changePlayer() {
     } else {
         gameBoard.setAttribute("player", 'X')
     }
+}
+
+function playSucessfulClickSound() {
+    successClick.play()
 }
 
 
