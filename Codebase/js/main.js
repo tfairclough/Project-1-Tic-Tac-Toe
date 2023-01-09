@@ -124,13 +124,13 @@ function changePlayer() {
 }
 
 function playAudio(sound) {
-    if (muteIcon.getAttribute('class') === 'unmuted')
+    if (!muteIcon.classList.contains("muted"))
         sound.play()
 }
 
 
 function toggleMute(e) {
-    muteIcon.classList.toggle('muted')
+    muteIcon.classList.toggle("muted")
 }
 
 
