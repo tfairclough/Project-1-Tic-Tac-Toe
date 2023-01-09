@@ -58,7 +58,7 @@ function checkGameState() {
 }
 
 function resetBoard() {
-    gameTiles.forEach(tile => tile.innerHTML = '')
+    gameTiles.forEach(tile => {tile.innerHTML = ''; tile.classList.remove("noInteractions")})
     toggleBoardActive('on')
 }
 
@@ -84,11 +84,15 @@ function updateResponse(response) {
 
 function updateTileValue(e) {
     e.target.innerHTML = gameBoard.getAttribute("player")
+    e.target.classList.add("noInteractions")
 }
 
 
 function toggleBoardActive(status) {
     gameBoard.setAttribute("gamestate", `${status}`)
+    if (status=== 'off') {
+        gameTiles.forEach(tile => {tile.classList.add("noInteractions")})
+    }
 
 }
 
@@ -98,7 +102,6 @@ function changePlayer() {
     } else {
         gameBoard.setAttribute("player", 'X')
     }
-
 }
 
 
