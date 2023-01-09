@@ -67,6 +67,7 @@ function currentGameState(currentGameBoard) {
 
 function updateScores(result) {
     if (result === "Winner") {
+        displayWinVisual()
         +document.querySelector(`#${gameBoard.getAttribute('player')}`).innerHTML++
     } else {
         +tieCounter.innerHTML++
@@ -74,8 +75,14 @@ function updateScores(result) {
 }
 
 
+function displayWinVisual() {
+    let winningIndex = winConditions.findIndex(condition => allEqualAndNotBlank([...condition.map(index => [...gameTiles].map(tile => tile.innerHTML)[index])]))
+    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("winGlow"))
+}
+
+
 function resetBoard() {
-    gameTiles.forEach(tile => {tile.innerHTML = ''; tile.classList.remove("noInteractions")})
+    gameTiles.forEach(tile => {tile.innerHTML = ''; tile.classList.remove("noInteractions", "winGlow")})
     toggleBoardInteraction('on')
 }
 

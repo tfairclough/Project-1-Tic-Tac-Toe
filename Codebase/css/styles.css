@@ -228,4 +228,10 @@ footer {
     height: 50px;
 }
 
+.winGlow { 
+    animation: winning 1000ms 3;
+}
 
+@keyframes winning {
+    50% {font-size: 160px;}
+}
