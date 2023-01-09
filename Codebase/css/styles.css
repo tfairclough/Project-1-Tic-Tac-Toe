@@ -12,7 +12,6 @@ header {
     align-items: flex-end;
 }
 
-
 nav {
     display: flex;
     min-height: 50px;
@@ -45,8 +44,9 @@ nav {
 }
 
 main {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 0.5fr 600px 0.5fr;
+    grid-template-rows: 1fr;
     min-height: 650px;
 }
 
@@ -56,17 +56,15 @@ main {
     justify-content:baseline;
     align-items: center;
     flex-grow: 1;
-    min-width: 200px;
     border-radius: 10px;
-    margin: 5px;
   }
 
 .game {
     display: flex;
     flex-direction: column;
     background-color:rgb(255, 255, 255);
-    min-width: 500px;
     border: #482307 4px solid;
+    max-width: 600px;
   }
 
 #responseToPlayer {
@@ -78,7 +76,7 @@ main {
     font-size: 32px;
     color: #fff;
     background-color: rgb(126, 99, 65);
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 #board {
@@ -86,7 +84,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    padding: ;
+    padding: 20px;
 }
 
 #gameboard {
@@ -103,7 +101,7 @@ main {
     align-items: center;
     background-color: rgb(243, 213, 176);
     font-size: 120px;
-    height: 150px;
+
 }
 
 .gametile:hover {
@@ -114,25 +112,20 @@ main {
     transform: scale(0.95);
 }
 
-footer {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    min-height: 30px;
-    margin: 20px 0px;
-    background-color: rgb(167, 167, 167);
+.sideBar {
+    padding: 80px 30px;
 }
 
 .scoreTag {
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center;
-    background-color: rgb(168, 143, 111);
-    height: 75px;
-    min-width: 100px;
-    max-width: 200px;
-    margin: 5px 0px;
+    background-color: rgb(145, 73, 73);
+    min-height: 75px;
+    width: 100px;
+    margin: 20px 0;
     border-radius: 15px;
+    padding: 0 10px;
 }
 
 .scoreCounter {
@@ -140,12 +133,8 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    min-width: 50px;
+    width: 50px;
     height: 50px;
-}
-
-.noInteractions{
-    pointer-events: none;
 }
 
 .buttonglow {
@@ -167,9 +156,6 @@ footer {
     }
   }
 
-.sideBar {
-    padding: 100px 30px;
-}
 
 .sideTitle {
     text-decoration: underline;
@@ -185,15 +171,36 @@ footer {
     padding: 20px 0;
 }
 
-.highlightPlayer {
-    font-size: 40px;
-}
-
 .playersInfo {
     display: flex;
     align-items: flex-end;
+    margin: 0;
 }
 
 .scores {
     align-items: baseline;
+    font-size: large;
+    margin: 0;
+}
+
+h4 {
+   font-size: 24px;
+   margin: 0;
+}
+
+footer {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 30px;
+    margin: 20px 0px;
+    background-color: rgb(167, 167, 167);
+}
+
+.highlightPlayer {
+    font-size: 40px;
+}
+
+.noInteractions{
+    pointer-events: none;
 }
