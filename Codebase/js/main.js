@@ -58,19 +58,19 @@ function checkTurnResult() {
 }
 
 
+function currentGameState(currentGameBoard) {
+    return winConditionMet(currentGameBoard) ? "Winner"
+        : drawConditionMet(currentGameBoard) ? "Tie"
+            : `Player ${gameBoard.getAttribute('player')} turn`
+}
+
+
 function updateScores(result) {
     if (result === "Winner") {
         +document.querySelector(`#${gameBoard.getAttribute('player')}`).innerHTML++
     } else {
         +tieCounter.innerHTML++
     }
-}
-
-
-function currentGameState(currentGameBoard) {
-    return winConditionMet(currentGameBoard) ? "Winner"
-        : drawConditionMet(currentGameBoard) ? "Tie"
-            : `Player ${gameBoard.getAttribute('player')} turn`
 }
 
 
@@ -128,14 +128,9 @@ function playAudio(sound) {
         sound.play()
 }
 
+
 function toggleMute(e) {
-    if (muteIcon.getAttribute('class') === 'unmuted') {
-        muteIcon.classList.remove('unmuted')
-        muteIcon.classList.add('muted')
-    } else {
-        muteIcon.classList.remove('muted')
-        muteIcon.classList.add('unmuted')
-    }
+    muteIcon.classList.toggle('muted')
 }
 
 
