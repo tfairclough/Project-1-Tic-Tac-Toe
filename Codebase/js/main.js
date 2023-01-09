@@ -36,8 +36,8 @@ function resetScores() {
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
         updateTileValue(e)
-        checkTurnResult()       
         changePlayer()
+        checkTurnResult()       
     }
 }
 
