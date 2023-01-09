@@ -1,6 +1,7 @@
 body {
     height: 100vh;
-    margin: 0 auto;
+    width: 100vw;
+    margin: 0;
     display: flex;
     flex-direction: column;
 }
@@ -46,8 +47,7 @@ nav {
 main {
     display: grid;
     grid-template-columns: 0.5fr 600px 0.5fr;
-    grid-template-rows: 1fr;
-    min-height: 650px;
+    grid-template-rows: 650px
 }
 
 .playarea {
@@ -118,6 +118,8 @@ main {
 }
 
 .sideBar {
+    display: flex;
+    margin: 0;
     padding: 80px 50px;
 }
 
@@ -127,7 +129,7 @@ main {
     align-items: center;
     background-color: rgb(255, 255, 255);
     min-height: 75px;
-    width: 140px;
+    min-width: 120px;
     margin: 20px 0;
     border-radius: 15px;
     padding: 0 10px;
@@ -189,8 +191,8 @@ main {
 }
 
 h4 {
-   font-size: 24px;
-   margin: 0;
+    font-size: 24px;
+    margin: 0;
 }
 
 footer {
@@ -217,6 +219,7 @@ footer {
     right: 10px;
     width: 50px;
     height: 50px;
+    margin: 0;
 }
 
 .muted {
@@ -226,6 +229,7 @@ footer {
     right: 10px;
     width: 50px;
     height: 50px;
+    margin: 0;
 }
 
 .winGlow { 
