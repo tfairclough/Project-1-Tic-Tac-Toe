@@ -3,19 +3,21 @@ const resetScoresButton = document.querySelector("#resetScoresButton")
 const newGameButton = document.querySelector("#newGameButton")
 const gameBoard = document.querySelector("#gameboard")
 const gameTiles = document.querySelectorAll(".gametile")
-const responseToPlayer = document.querySelector("#responseToPlayer")
+const responseToPlayer = document.querySelector("#response")
 const tieCounter = document.querySelector(`#Tie`)
 const scoreCounters = document.querySelectorAll(".scoreCounter")
+const muteIcon = document.querySelector('#muteButton')
 
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-let clickedTile = new Audio('../TilePlacement.mp3')
-let newGameSound = new Audio('../NewGameSound.mp3')
+let clickedTile = new Audio('../Audio/TilePlacement.mp3')
+let newGameSound = new Audio('../Audio/NewGameSound.mp3')
 
 // Event Listeners
 resetScoresButton.addEventListener('click', resetScores)
 newGameButton.addEventListener('click', newGame)
 gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
+muteIcon.addEventListener('click', toggleMute)
 
 
 // Need to track player who went first and chnage it on new game
@@ -94,7 +96,7 @@ function allEqualAndNotBlank(arr) {
 
 
 function updateResponse(response) {
-    responseToPlayer.innerHTML  = response
+    responseToPlayer.innerText  = response
 }
 
 
@@ -122,10 +124,19 @@ function changePlayer() {
 }
 
 function playAudio(sound) {
-    sound.play()
+    if (muteIcon.getAttribute('class') === 'unmuted')
+        sound.play()
 }
 
-
+function toggleMute(e) {
+    if (muteIcon.getAttribute('class') === 'unmuted') {
+        muteIcon.classList.remove('unmuted')
+        muteIcon.classList.add('muted')
+    } else {
+        muteIcon.classList.remove('muted')
+        muteIcon.classList.add('unmuted')
+    }
+}
 
 
 

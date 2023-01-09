@@ -69,14 +69,19 @@ main {
 
 #responseToPlayer {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 75px;
-    font-size: 32px;
-    color: #fff;
     background-color: rgb(126, 99, 65);
     border-radius: 2px;
+}
+
+#response {
+    font-size: 32px;
+    color: #fff;
+    margin: 0;
 }
 
 #board {
@@ -204,3 +209,23 @@ footer {
 .noInteractions{
     pointer-events: none;
 }
+
+.unmuted {
+    position: absolute;
+    background-image: url("../../Images/Unmuted.png");
+    background-size: contain;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.muted {
+    position: absolute;
+    background-image: url("../../Images/Muted.png");
+    background-size: contain;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+
