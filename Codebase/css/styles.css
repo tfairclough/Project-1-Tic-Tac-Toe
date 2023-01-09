@@ -47,7 +47,7 @@ nav {
 main {
     display: grid;
     grid-template-columns: 0.5fr 600px 0.5fr;
-    grid-template-rows: 650px
+    grid-template-rows: 650px;
 }
 
 .playarea {
@@ -57,6 +57,7 @@ main {
     align-items: center;
     flex-grow: 1;
     border-radius: 10px;
+    margin: 0;
   }
 
 .game {
@@ -120,7 +121,7 @@ main {
 .sideBar {
     display: flex;
     margin: 0;
-    padding: 80px 50px;
+    padding: 80px 30px;
 }
 
 .scoreTag {
