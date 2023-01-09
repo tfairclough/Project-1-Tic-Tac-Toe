@@ -16,7 +16,11 @@
         <button id="resetScoresButton" class="button">Reset Scores</button>
     </nav>
     <main>
-        <section class="playersinfo playarea"><h3>Player 1: X</h3></section>
+        <section class="playersInfo playarea sideBar">
+            <p class="sideTitle">Players</p>
+            <p class="players" id="player1">X</p>
+            <p class="players" id="player2">O</p>
+        </section>
         <section class="game playarea">
             <div id="responseToPlayer"></div>
             <div id="board">
@@ -33,8 +37,8 @@
                 </div>
             </div>
         </section>
-        <section class="scores playarea">
-            <h3>Scores</h3>
+        <section class="scores playarea sideBar">
+            <p class="sideTitle">Scores</p>
             <div class="scoreTag">
                 <h4>X:</h4>
                 <div class="scoreCounter" id="X">0</div>
