@@ -9,7 +9,8 @@ const scoreCounters = document.querySelectorAll(".scoreCounter")
 
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-let successClick = new Audio('../zapsplat_multimedia_button_click_004_68776.mp3')
+let clickedTile = new Audio('../TilePlacement.mp3')
+let newGameSound = new Audio('../NewGameSound.mp3')
 
 // Event Listeners
 resetScoresButton.addEventListener('click', resetScores)
@@ -19,6 +20,7 @@ gameTiles.forEach(tile => tile.addEventListener('click', tileClicked))
 
 // Need to track player who went first and chnage it on new game
 function newGame() {
+    playAudio(newGameSound)
     resetBoard()
     updateResponse("")
     newGameButton.classList.remove("buttonglow")
@@ -36,7 +38,7 @@ function resetScores() {
 //4. Change Player
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
-        playSucessfulClickSound()
+        playAudio(clickedTile)
         updateTileValue(e)
         changePlayer()
         checkTurnResult()       
@@ -119,8 +121,8 @@ function changePlayer() {
     }
 }
 
-function playSucessfulClickSound() {
-    successClick.play()
+function playAudio(sound) {
+    sound.play()
 }
 
 
