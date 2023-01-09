@@ -147,3 +147,22 @@ footer {
 .noInteractions{
     pointer-events: none;
 }
+
+.buttonglow {
+    animation: glowing 1000ms infinite;
+  }
+
+@keyframes glowing {
+    0% {
+      background-color: rgb(196, 171, 141);
+      box-shadow: 0 0 10px rgb(196, 171, 141);
+    }
+    50% {
+      background-color: #482307;
+      box-shadow: 0 0 25px #482307;
+    }
+    100% {
+      background-color: rgb(196, 171, 141);
+      box-shadow: 0 0 10px rgb(196, 171, 141);
+    }
+  }
