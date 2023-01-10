@@ -16,18 +16,18 @@
         <button id="resetScoresButton" class="button">Reset Scores</button>
     </nav>
     <main>
-        <section class="playersInfo playarea sideBar">
+        <section id="playersInfo">
             <p class="sideTitle">Players</p>
             <p class="players" id="player1">X</p>
             <p class="players" id="player2">O</p>
         </section>
-        <section class="game playarea">
-            <div id="responseToPlayer">
-                <p id="response"></p>
+        <section id="gameSection">
+            <div id="responseDiv">
+                <p id="responseText"></p>
                 <div id="muteButton" class="unmuted"></div>
             </div>
-            <div id="board">
-                <div id="gameboard" player="X" gamestate="on">
+            <div id="boardDiv">
+                <div id="board" player="X" gamestate="on">
                     <div class="gametile" id="tile0"></div>
                     <div class="gametile" id="tile1"></div>
                     <div class="gametile" id="tile2"></div>
@@ -40,18 +40,18 @@
                 </div>
             </div>
         </section>
-        <section class="scores playarea sideBar">
+        <section class="scores">
             <p class="sideTitle">Scores</p>
             <div class="scoreTag">
-                <h4>X:</h4>
+                <h4 class="scoreNameTag">X:</h4>
                 <div class="scoreCounter" id="X">0</div>
             </div>
             <div class="scoreTag">
-                <h4>O:</h4>
+                <h4 class="scoreNameTag">O:</h4>
                 <div class="scoreCounter" id="O">0</div>
             </div>
             <div class="scoreTag">
-                <h4>Tie:</h4>
+                <h4 class="scoreNameTag">Tie:</h4>
                 <div class="scoreCounter" id="Tie">0</div>
             </div>
         </section>

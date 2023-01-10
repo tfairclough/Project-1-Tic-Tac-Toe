@@ -1,9 +1,9 @@
 // Common Selectors
 const resetScoresButton = document.querySelector("#resetScoresButton")
 const newGameButton = document.querySelector("#newGameButton")
-const gameBoard = document.querySelector("#gameboard")
+const gameBoard = document.querySelector("#board")
 const gameTiles = document.querySelectorAll(".gametile")
-const responseToPlayer = document.querySelector("#response")
+const responseToPlayer = document.querySelector("#responseText")
 const tieCounter = document.querySelector(`#Tie`)
 const scoreCounters = document.querySelectorAll(".scoreCounter")
 const muteIcon = document.querySelector('#muteButton')
@@ -42,8 +42,8 @@ function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === '')) {
         playAudio(clickedTile)
         updateTileValue(e)
-        changePlayer()
         checkTurnResult()       
+        changePlayer()
     }
 }
 

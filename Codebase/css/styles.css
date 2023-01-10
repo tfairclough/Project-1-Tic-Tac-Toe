@@ -1,17 +1,17 @@
 body {
     height: 100vh;
     width: 100vw;
-    min-width: 1000px;
+    min-width: 750px;
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
 header {
-    min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    height: 100px;
 }
 
 nav {
@@ -47,46 +47,53 @@ nav {
 
 main {
     display: grid;
-    grid-template-columns: 0.5fr 600px 0.5fr;
-    grid-template-rows: 650px;
+    grid-template-columns: 0.5fr 450px 0.5fr;
+    grid-template-rows: 450px;
 }
 
-.playarea {
+section {
     display: flex;
     flex-direction: column;
     justify-content:baseline;
-    align-items: center;
     flex-grow: 1;
     border-radius: 10px;
-    margin: 0;
-  }
+}
 
-.game {
+#playersInfo {
     display: flex;
-    flex-direction: column;
-    background-color:rgb(255, 255, 255);
-    border: #482307 4px solid;
-    max-width: 600px;
-  }
+    align-items: flex-end;
+    margin: 0;
+    padding: 50px 30px 50px 0px;
+}
 
-#responseToPlayer {
+.players {
+    font-size: 50px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+#gameSection {
+    border: #482307 4px solid;
+}
+
+#responseDiv {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 75px;
+    height: 75px;
     background-color: rgb(126, 99, 65);
     border-radius: 2px;
 }
 
-#response {
+#responseText {
     font-size: 32px;
     color: #fff;
     margin: 0;
 }
 
-#board {
+#boardDiv {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,10 +101,10 @@ main {
     padding: 20px;
 }
 
-#gameboard {
+#board {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
-    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
     gap: 10px;
     
 }
@@ -107,23 +114,19 @@ main {
     justify-content: center;
     align-items: center;
     background-color: rgb(243, 213, 176);
-    font-size: 120px;
+    font-size: 80px;
 
 }
 
 .gametile:hover {
     border: #482307 1px solid;
+    transform: scale(1.05);
 }
 
 .gametile:active {
-    transform: scale(0.95);
+    transform: scale(0.92);
 }
 
-.sideBar {
-    display: flex;
-    margin: 0;
-    padding: 80px 30px;
-}
 
 .scoreTag {
     display: flex;
@@ -131,9 +134,7 @@ main {
     align-items: center;
     background-color: rgb(255, 255, 255);
     min-height: 75px;
-    min-width: 100px;
-    margin: 20px 0;
-    border-radius: 15px;
+    min-width: 120px;
 }
 
 .scoreCounter {
@@ -141,8 +142,11 @@ main {
     justify-content: center;
     align-items: center;
     border: #482307 2px solid;
+    background-color:rgb(126, 99, 65);
+    color: rgb(255, 255, 255);
     width: 50px;
     height: 50px;
+    font-size: 30px;
 }
 
 .buttonglow {
@@ -173,25 +177,12 @@ main {
     padding: 20px 0;
 }
 
-.players {
-    font-size: 50px;
-    margin: 0;
-    padding: 20px 0;
-}
-
-.playersInfo {
-    display: flex;
-    align-items: flex-end;
-    margin: 0;
-}
-
 .scores {
     align-items: baseline;
-    font-size: large;
-    margin: 0;
+    padding: 50px 0px 50px 30px;
 }
 
-h4 {
+.scoreNameTag {
     font-size: 24px;
     margin: 0;
 }
@@ -201,13 +192,10 @@ footer {
     justify-content:center;
     align-items: center;
     min-height: 30px;
-    margin: 40px 0px;
+    margin: 40px 0px 0px 0px;
     background-color: rgb(167, 167, 167);
 }
 
-.highlightPlayer {
-    font-size: 40px;
-}
 
 .noInteractions{
     pointer-events: none;
@@ -238,5 +226,5 @@ footer {
 }
 
 @keyframes winning {
-    50% {font-size: 160px;}
+    50% {font-size: 100px;}
 }
