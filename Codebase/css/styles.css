@@ -47,8 +47,8 @@ nav {
 
 main {
     display: grid;
-    grid-template-columns: 0.5fr 450px 0.5fr;
-    grid-template-rows: 450px;
+    grid-template-columns: 0.5fr 350px 0.5fr;
+    grid-template-rows: 400px;
 }
 
 section {
@@ -59,7 +59,7 @@ section {
     border-radius: 10px;
 }
 
-#playersInfo {
+#players-info {
     display: flex;
     align-items: flex-end;
     margin: 0;
@@ -72,28 +72,28 @@ section {
     padding: 10px 0;
 }
 
-#gameSection {
+#game-section {
     border: #482307 4px solid;
 }
 
-#responseDiv {
+#response-div {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 75px;
+    height: 50px;
     background-color: rgb(126, 99, 65);
     border-radius: 2px;
 }
 
-#responseText {
-    font-size: 32px;
+#response-text {
+    font-size: 28px;
     color: #fff;
     margin: 0;
 }
 
-#boardDiv {
+#board-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,8 +103,8 @@ section {
 
 #board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 85px);
+    grid-template-rows: repeat(3, 85px);
     gap: 10px;
     
 }
@@ -128,7 +128,7 @@ section {
 }
 
 
-.scoreTag {
+.score-tag {
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -137,7 +137,7 @@ section {
     min-width: 120px;
 }
 
-.scoreCounter {
+.score-counter {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +149,7 @@ section {
     font-size: 30px;
 }
 
-.buttonglow {
+.button-glow {
     animation: glowing 1000ms infinite;
 }
 
@@ -169,7 +169,7 @@ section {
 }
 
 
-.sideTitle {
+.side-title {
     text-decoration: underline;
     font-size: 28px;
     font-weight: 400;
@@ -182,7 +182,7 @@ section {
     padding: 50px 0px 50px 30px;
 }
 
-.scoreNameTag {
+.score-name-tag {
     font-size: 24px;
     margin: 0;
 }
@@ -197,7 +197,7 @@ footer {
 }
 
 
-.noInteractions{
+.no-interactions{
     pointer-events: none;
 }
 
@@ -221,10 +221,14 @@ footer {
     margin: 0;
 }
 
-.winGlow { 
+.win-glow { 
     animation: winning 1000ms 3;
 }
 
 @keyframes winning {
     50% {font-size: 100px;}
+}
+
+@media screen and (max-width:750px) {
+
 }

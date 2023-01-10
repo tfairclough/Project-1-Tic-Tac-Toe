@@ -1,12 +1,12 @@
 // Common Selectors
-const resetScoresButton = document.querySelector("#resetScoresButton")
-const newGameButton = document.querySelector("#newGameButton")
+const resetScoresButton = document.querySelector("#reset-scores-button")
+const newGameButton = document.querySelector("#new-game-button")
 const gameBoard = document.querySelector("#board")
 const gameTiles = document.querySelectorAll(".gametile")
-const responseToPlayer = document.querySelector("#responseText")
+const responseToPlayer = document.querySelector("#response-text")
 const tieCounter = document.querySelector(`#Tie`)
-const scoreCounters = document.querySelectorAll(".scoreCounter")
-const muteIcon = document.querySelector("#muteButton")
+const scoreCounters = document.querySelectorAll(".score-counter")
+const muteIcon = document.querySelector("#mute-button")
 
 // Variables 
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -55,10 +55,10 @@ function nextTurn() {
     updateResponseToPlayer(`Player ${gameBoard.getAttribute("player")} turn`)
 }
 
-function endGame(gameState) {
+function endGame(endGameState) {
     toggleBoardInteraction("off")
-    updateScores(gameState)
-    updateResponseToPlayer(gameState)
+    updateScores(endGameState)
+    updateResponseToPlayer(endGameState)
     savePageToLocalStorage()
 }
 
@@ -79,11 +79,11 @@ function updateScores(result) {
 
 function displayWinVisual() {
     let winningIndex = winConditions.findIndex(condition => allEqualAndNotBlank([...condition.map(index => [...gameTiles].map(tile => tile.innerHTML)[index])]))
-    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("winGlow"))
+    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
 }
 
 function resetBoard() {
-    gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("noInteractions", "winGlow")})
+    gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("no-interactions", "win-glow")})
     toggleBoardInteraction("on")
 }
 
