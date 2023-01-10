@@ -151,7 +151,7 @@ section {
 
 .buttonglow {
     animation: glowing 1000ms infinite;
-  }
+}
 
 @keyframes glowing {
     0% {
@@ -166,7 +166,7 @@ section {
       background-color: rgb(196, 171, 141);
       box-shadow: 0 0 10px rgb(196, 171, 141);
     }
-  }
+}
 
 
 .sideTitle {

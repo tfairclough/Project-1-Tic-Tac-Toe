@@ -52,13 +52,13 @@ function checkTurnResult() {
 
 function nextTurn() {
     changePlayer('player')
-    updateResponse(`Player ${gameBoard.getAttribute("player")} turn`)
+    updateResponseToPlayer(`Player ${gameBoard.getAttribute("player")} turn`)
 }
 
 function endGame(gameState) {
     toggleBoardInteraction("off")
     updateScores(gameState)
-    updateResponse(gameState)
+    updateResponseToPlayer(gameState)
     savePageToLocalStorage()
 }
 
@@ -99,7 +99,7 @@ function allEqualAndNotBlank(arr) {
     return arr.every(val => val === arr[0] && val !== "");
 }
 
-function updateResponse(response) {
+function updateResponseToPlayer(response) {
     responseToPlayer.innerText  = response
 }
 
@@ -137,7 +137,7 @@ function toggleMute(e) {
 function selectStartingPlayer() {
     let response = `Player ${gameBoard.getAttribute("startingPlayer")} turn`
     gameBoard.setAttribute("player", gameBoard.getAttribute("startingPlayer"))
-    updateResponse(response)
+    updateResponseToPlayer(response)
     changePlayer("startingPlayer")
 }
 
