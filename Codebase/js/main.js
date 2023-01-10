@@ -21,7 +21,6 @@ gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
 muteIcon.addEventListener("click", toggleMute)
 
 
-// Need to track player who went first and chnage it on new game
 function newGame() {
     playAudio(newGameSound)
     resetBoard()
@@ -29,16 +28,10 @@ function newGame() {
     newGameButton.classList.remove("buttonglow")
 }
 
-// Sets all scores back to zero
 function resetScores() {
     [...scoreCounters].forEach(score => score.innerHTML = 0)
 }
 
-// When a player clicks a tile this will:
-//1. Determine if the board and tile were active
-//2. Update the tile with the players token
-//3. Check the result of the turn
-//4. Change Player
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === "")) {
         playAudio(clickedTile)
@@ -46,7 +39,6 @@ function tileClicked(e) {
         checkTurnResult()       
     }
 }
-
 
 function checkTurnResult() {
    let gameState = currentGameState([...gameTiles].map(tile => tile.innerHTML))
@@ -56,7 +48,6 @@ function checkTurnResult() {
         nextTurn()
     }
 }
-
 
 function nextTurn() {
     changePlayer('player')
@@ -75,7 +66,6 @@ function currentGameState(currentGameBoard) {
         : `Continue`
 }
 
-
 function updateScores(result) {
     if (result === "Winner") {
         displayWinVisual()
@@ -85,44 +75,36 @@ function updateScores(result) {
     }
 }
 
-
 function displayWinVisual() {
     let winningIndex = winConditions.findIndex(condition => allEqualAndNotBlank([...condition.map(index => [...gameTiles].map(tile => tile.innerHTML)[index])]))
     winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("winGlow"))
 }
-
 
 function resetBoard() {
     gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("noInteractions", "winGlow")})
     toggleBoardInteraction("on")
 }
 
-
 function drawConditionMet(currentGameBoard) {
     return currentGameBoard.every((tile) => tile !== "")
 }
-
 
 function winConditionMet(currentGameBoard) {
     return winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))
 }
 
-
 function allEqualAndNotBlank(arr) {
     return arr.every(val => val === arr[0] && val !== "");
 }
-
 
 function updateResponse(response) {
     responseToPlayer.innerText  = response
 }
 
-
 function updateTileValue(e) {
     e.target.innerHTML = gameBoard.getAttribute("player")
     e.target.classList.add("noInteractions")
 }
-
 
 function toggleBoardInteraction(status) {
     gameBoard.setAttribute("gamestate", `${status}`)
@@ -155,8 +137,6 @@ function selectStartingPlayer() {
     updateResponse(response)
     changePlayer("startingPlayer")
 }
-
-
 
 // Helper Functions
 function log(input) {
