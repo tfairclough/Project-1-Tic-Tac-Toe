@@ -14,6 +14,7 @@ let clickedTile = new Audio("../Audio/TilePlacement.mp3")
 let newGameSound = new Audio("../Audio/NewGameSound.mp3")
 
 // Event Listeners
+window.addEventListener("load", retrieveLocalStorage)
 window.addEventListener("load", selectStartingPlayer)
 resetScoresButton.addEventListener("click", resetScores)
 newGameButton.addEventListener("click", newGame)
@@ -58,6 +59,7 @@ function endGame(gameState) {
     toggleBoardInteraction("off")
     updateScores(gameState)
     updateResponse(gameState)
+    savePageToLocalStorage()
 }
 
 function currentGameState(currentGameBoard) {
@@ -129,6 +131,7 @@ function playAudio(sound) {
 
 function toggleMute(e) {
     muteIcon.classList.toggle("muted")
+    savePageToLocalStorage()
 }
 
 function selectStartingPlayer() {
@@ -138,6 +141,21 @@ function selectStartingPlayer() {
     changePlayer("startingPlayer")
 }
 
+function retrieveLocalStorage() {
+    const retrievedGame = JSON.parse(window.localStorage.getItem('savedObject'));
+    [...scoreCounters].forEach( (counter, i) => counter.innerHTML = retrievedGame['scores'][i])
+    if (retrievedGame['muted']) {
+        toggleMute()
+    }
+}
+
+function savePageToLocalStorage() {
+    const currentGame = {
+        scores: [...[...scoreCounters].map(score => score.innerHTML)],
+        muted: (!muteIcon.classList.contains("muted")) ? false : true,
+    }
+    window.localStorage.setItem("savedObject", JSON.stringify(currentGame))
+}
 // Helper Functions
 function log(input) {
     console.log(input)
