@@ -201,9 +201,11 @@ section {
 
 footer {
     display: flex;
-    justify-content:end;
+    justify-content:center;
     align-items: center;
-    margin: 10px 10% 0
+    margin-top: 20px;
+    font-family: cursive;
+    font-size: 15px;
 }
 
 .no-interactions{
@@ -242,6 +244,7 @@ footer {
         min-width: 375px;
         min-height: 550px;
     }
+
     main {
         grid-template-columns: 100%;
         grid-template-rows: auto auto auto;
@@ -252,7 +255,7 @@ footer {
     }
 
     #players-info {
-        padding: 5px 0;
+        padding: 0 0 5px 0;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -270,7 +273,7 @@ footer {
     }
 
     .scores { 
-        padding: 15px 0;
+        padding: 15px 0 0 0;
         flex-direction: row;
         justify-content: center;
         align-items: center;
