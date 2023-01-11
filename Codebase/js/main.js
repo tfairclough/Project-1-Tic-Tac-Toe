@@ -8,10 +8,10 @@ const tieCounter = document.querySelector(`#Tie`)
 const scoreCounters = document.querySelectorAll(".score-counter")
 const muteIcon = document.querySelector("#mute-button")
 
-// Variables 
+// Variables
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 let clickedTile = new Audio("../Audio/TilePlacement.mp3")
-let newGameSound = new Audio("../Audio/NewGameSound.mp3")
+let newGameSound = new Audio("../Audio/newGameSound.mp3")
 
 // Event Listeners
 window.addEventListener("load", retrieveLocalStorage)
@@ -37,14 +37,15 @@ function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === "")) {
         playAudio(clickedTile)
         updateTileValue(e)
-        checkTurnResult()       
+        let currentBoard = [...gameTiles].map(tile => tile.innerHTML)
+        performTurnResult(currentBoard)       
     }
 }
 
-function checkTurnResult() {
-   let gameState = currentGameState([...gameTiles].map(tile => tile.innerHTML))
-    if ((gameState === "Winner") || (gameState === "Tie")) {
-        endGame(gameState)
+function performTurnResult(currentBoard) {
+   let currentGameState = returnCurrentGameState(currentBoard)
+    if ((currentGameState === "Winner") || (currentGameState === "Tie")) {
+        endGame(currentGameState, currentBoard)
     } else {
         nextTurn()
     }
@@ -55,36 +56,36 @@ function nextTurn() {
     updateResponseToPlayer(`Player ${gameBoard.getAttribute("player")} turn`)
 }
 
-function endGame(endGameState) {
-    toggleBoardInteraction("off")
-    updateScores(endGameState)
-    updateResponseToPlayer(endGameState)
+function endGame(gameResult, endBoard) {
+    toggleBoardInteractionStatus("off")
+    updateScores(gameResult, endBoard)
+    updateResponseToPlayer(gameResult)
     savePageToLocalStorage()
 }
 
-function currentGameState(currentGameBoard) {
+function returnCurrentGameState(currentGameBoard) {
     return winConditionMet(currentGameBoard) ? "Winner"
         : drawConditionMet(currentGameBoard) ? "Tie"
         : `Continue`
 }
 
-function updateScores(result) {
+function updateScores(result, endBoard) {
     if (result === "Winner") {
-        displayWinVisual()
+        displayWinVisual(endBoard)
         +document.querySelector(`#${gameBoard.getAttribute("player")}`).innerHTML++
     } else {
         +tieCounter.innerHTML++
     }
 }
 
-function displayWinVisual() {
-    let winningIndex = winConditions.findIndex(condition => allEqualAndNotBlank([...condition.map(index => [...gameTiles].map(tile => tile.innerHTML)[index])]))
+function displayWinVisual(endBoard) {
+    let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
     winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
 }
 
 function resetBoard() {
     gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("no-interactions", "win-glow")})
-    toggleBoardInteraction("on")
+    toggleBoardInteractionStatus("on")
 }
 
 function drawConditionMet(currentGameBoard) {
@@ -108,11 +109,11 @@ function updateTileValue(e) {
     e.target.classList.add("noInteractions")
 }
 
-function toggleBoardInteraction(status) {
+function toggleBoardInteractionStatus(status) {
     gameBoard.setAttribute("gamestate", `${status}`)
     if (status=== "off") {
-        newGameButton.classList.add("buttonglow")
-        gameTiles.forEach(tile => {tile.classList.add("noInteractions")})
+        newGameButton.classList.add("button-glow")
+        gameTiles.forEach(tile => {tile.classList.add("no-interactions")})
     }
 }
 
