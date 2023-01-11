@@ -26,7 +26,7 @@ function newGame() {
     playAudio(newGameSound)
     resetBoard()
     selectStartingPlayer()
-    newGameButton.classList.remove("buttonglow")
+    newGameButton.classList.remove("button-glow")
 }
 
 // Resets game scores and updateLocalStorage
