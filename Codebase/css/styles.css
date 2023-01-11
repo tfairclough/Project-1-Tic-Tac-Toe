@@ -1,6 +1,6 @@
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     min-width: 750px;
     margin: 0;
     display: flex;
@@ -10,15 +10,20 @@ body {
 header {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    height: 100px;
+    align-items: baseline;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 20px;
 }
 
 nav {
     display: flex;
-    min-height: 50px;
+    padding: 10px 0;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     list-style-type: none;
 }
 
@@ -133,8 +138,8 @@ section {
     justify-content:space-between;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    min-height: 75px;
     min-width: 120px;
+    margin: 3% 0px;
 }
 
 .score-counter {
@@ -191,9 +196,8 @@ footer {
     display: flex;
     justify-content:center;
     align-items: center;
-    min-height: 30px;
-    margin: 40px 0px 0px 0px;
     background-color: rgb(167, 167, 167);
+    margin-top: 10px;
 }
 
 
@@ -206,19 +210,13 @@ footer {
     background-image: url("../../Images/Unmuted.png");
     background-size: contain;
     right: 10px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 0;
 }
 
 .muted {
-    position: absolute;
     background-image: url("../../Images/Muted.png");
-    background-size: contain;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    margin: 0;
 }
 
 .win-glow { 
@@ -230,5 +228,81 @@ footer {
 }
 
 @media screen and (max-width:750px) {
+
+    body {
+        min-width: 300px;
+        min-height: 550px;
+    }
+    main {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+    }
+
+    nav {
+        padding: 10px 0 0 0;
+    }
+
+    #players-info {
+        padding: 5px 0;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .side-title {
+        padding: 0 5%;
+        font-size: 26px;
+    }
+
+    .players {
+        font-size: 24px;
+        padding: 0 10px;
+    }
+
+    .scores { 
+        padding: 10px 0;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #response-div {
+        height: 40px;
+    }
+
+    #response-text {
+        font-size: 24px;
+    }
+
+    #game-section {
+        margin: auto;
+    }
+
+    .score-tag  {
+        margin: 0 3% 0 0;
+        min-width: 20px;
+    }
+
+    .score-name-tag {
+        margin: 0 5% 0 0;
+    }
+
+    .score-counter {
+        font-size: 24px;
+        height: 30px;
+        width: 30px;
+    }
+
+    #board {
+        display: grid;
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: repeat(3, 70px);
+        gap: 10px;
+        
+    }
+
+    footer{
+        margin: auto 0;
+    }
 
 }
