@@ -20,7 +20,7 @@ h1 {
 
 nav {
     display: flex;
-    padding: 10px 0;
+    padding: 20px 0;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -78,22 +78,30 @@ section {
 }
 
 #game-section {
-    border: #482307 4px solid;
-}
+    border: 10px solid transparent;
+    border-image-slice: 20 20 20 20;
+    border-image-width: 10px 10px 10px 10px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-image-source: url("../../Images/dark_wood_frame.jpeg");
+    box-shadow: inset 0 0 5px #000000;
+  }
 
 #response-div {
+    padding-top: 5px;
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 50px;
-    background-color: rgb(126, 99, 65);
+    border-color: rgb(126, 99, 65);
+    box-shadow: 0 4px 6px -6px black;
 }
 
 #response-text {
     font-size: 28px;
-    color: #fff;
+    color: rgb(0, 0, 0);
     margin: 0;
 }
 
@@ -119,11 +127,12 @@ section {
     align-items: center;
     background-color: rgb(243, 213, 176);
     font-size: 80px;
+    box-shadow: 0 3px 5px #0000007d;
 }
 
 .gametile:hover {
-    border: #482307 1px solid;
-    transform: scale(1.05);
+    border: #482307 1.5px solid;
+    transform: scale(1.075);
 }
 
 .gametile:active {
@@ -135,17 +144,19 @@ section {
     display: flex;
     justify-content:space-between;
     align-items: center;
+    padding-left: 10px;
     background-color: rgb(255, 255, 255);
     min-width: 120px;
     margin: 3% 0px;
+    background-image: url("../../Images/dark_wood_frame.jpeg");
+    box-shadow: 0 2px 5px #0000007d;
+    color: rgb(255, 255, 255);
 }
 
 .score-counter {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: #482307 2px solid;
-    background-color:rgb(126, 99, 65);
     color: rgb(255, 255, 255);
     width: 50px;
     height: 50px;
@@ -192,12 +203,10 @@ section {
 
 footer {
     display: flex;
-    justify-content:center;
+    justify-content:end;
     align-items: center;
-    background-color: rgb(167, 167, 167);
-    margin-top: 10px;
+    margin: 10px 5% 0
 }
-
 
 .no-interactions{
     pointer-events: none;
@@ -228,7 +237,7 @@ footer {
 @media screen and (max-width:750px) {
 
     body {
-        min-width: 300px;
+        min-width: 375px;
         min-height: 550px;
     }
     main {
@@ -248,17 +257,18 @@ footer {
     }
 
     .side-title {
-        padding: 0 5%;
+        padding: 0 3%;
         font-size: 26px;
+        display: none;
     }
 
     .players {
-        font-size: 24px;
+        font-size: 36px;
         padding: 0 10px;
     }
 
     .scores { 
-        padding: 10px 0;
+        padding: 15px 0;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -277,12 +287,14 @@ footer {
     }
 
     .score-tag  {
-        margin: 0 3% 0 0;
-        min-width: 20px;
+        margin: 0 1%;
+        padding: 0 7px;
+        min-width: 75px;
     }
 
     .score-name-tag {
-        margin: 0 5% 0 0;
+        margin-left: 3px;
+        font-weight: 300;
     }
 
     .score-counter {
@@ -299,8 +311,5 @@ footer {
         
     }
 
-    footer{
-        margin: 0;
-    }
 
 }
