@@ -29,9 +29,10 @@ function newGame() {
     newGameButton.classList.remove("buttonglow")
 }
 
-// Resets game scores
+// Resets game scores and updateLocalStorage
 function resetScores() {
     [...scoreCounters].forEach(score => score.innerHTML = 0)
+    savePageToLocalStorage()
 }
 
 // On a gametile click, executes a turn and determines the turn outcome. 
