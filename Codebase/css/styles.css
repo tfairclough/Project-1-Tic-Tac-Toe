@@ -139,15 +139,13 @@ section {
     transform: scale(0.92);
 }
 
-
 .score-tag {
     display: flex;
     justify-content:space-between;
     align-items: center;
     padding-left: 10px;
-    background-color: rgb(255, 255, 255);
     min-width: 120px;
-    margin: 3% 0px;
+    margin: 8px 0px;
     background-image: url("../../Images/dark_wood_frame.jpeg");
     box-shadow: 0 2px 5px #0000007d;
     color: rgb(255, 255, 255);
@@ -205,7 +203,7 @@ footer {
     display: flex;
     justify-content:end;
     align-items: center;
-    margin: 10px 5% 0
+    margin: 10px 10% 0
 }
 
 .no-interactions{
@@ -238,7 +236,7 @@ footer {
     50% {font-size: 100px;}
 }
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:720px) {
 
     body {
         min-width: 375px;

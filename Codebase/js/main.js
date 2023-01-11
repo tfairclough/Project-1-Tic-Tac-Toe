@@ -76,7 +76,7 @@ function returnCurrentGameState(currentGameBoard) {
         : `Continue`
 }
 
-// Updates the result depedning on the result. If there is a winner it intiiates the winVisual
+// Updates the ScoreCounter depedning on the result. If there is a winner it intiiates the winVisual
 function updateScores(result, endBoard) {
     if (result === "Winner") {
         displayWinVisual(endBoard)
@@ -98,22 +98,22 @@ function resetBoard() {
     toggleBoardInteractionStatus("on")
 }
 
-// Returns a bool: True if the game is drawn
+// Returns a bool: true if the game is drawn
 function drawConditionMet(currentGameBoard) {
     return currentGameBoard.every((tile) => tile !== "")
 }
 
-// Returns a bool: True is game is won
+// Returns a bool: true is game is won
 function winConditionMet(currentGameBoard) {
     return winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))
 }
 
-// Returns true if the given array is all equal and the array doesn't contain any blanks
+// Returns a bool: true if the given array is all equal and the array doesn't contain any blanks
 function allEqualAndNotBlank(arr) {
     return arr.every(val => val === arr[0] && val !== "");
 }
 
-// Updates response to player with provided String
+// Updates response to player with provided string
 function updateResponseToPlayer(response) {
     responseToPlayer.innerText  = response
 }
@@ -124,7 +124,7 @@ function updateTileValue(e) {
     e.target.classList.add("noInteractions")
 }
 
-//  Toggles the board 
+//  Toggles entire board interactivity ('on', 'off'). If off, flag new game button to user
 function toggleBoardInteractionStatus(status) {
     gameBoard.setAttribute("gamestate", `${status}`)
     if (status=== "off") {
@@ -133,6 +133,7 @@ function toggleBoardInteractionStatus(status) {
     }
 }
 
+// Changes player
 function changePlayer(attributeSelector) {
     if (gameBoard.getAttribute(attributeSelector) === "X") {
         gameBoard.setAttribute(attributeSelector, "O")
@@ -141,16 +142,19 @@ function changePlayer(attributeSelector) {
     }
 }
 
+// Plays provided audio clip
 function playAudio(sound) {
     if (!muteIcon.classList.contains("muted"))
         sound.play()
 }
 
+// toggles game sound
 function toggleMute(e) {
     muteIcon.classList.toggle("muted")
     savePageToLocalStorage()
 }
 
+// Selects starting player and displays it to the user. Updates starting player for next game
 function selectStartingPlayer() {
     let response = `Player ${gameBoard.getAttribute("startingPlayer")} turn`
     gameBoard.setAttribute("player", gameBoard.getAttribute("startingPlayer"))
@@ -158,6 +162,7 @@ function selectStartingPlayer() {
     changePlayer("startingPlayer")
 }
 
+// Retrives local storage file and updates scores and mute history
 function retrieveLocalStorage() {
     const retrievedGame = JSON.parse(window.localStorage.getItem('savedObject'));
     [...scoreCounters].forEach( (counter, i) => counter.innerHTML = retrievedGame['scores'][i])
@@ -166,6 +171,7 @@ function retrieveLocalStorage() {
     }
 }
 
+// Saves scores and mute selection to localstorage
 function savePageToLocalStorage() {
     const currentGame = {
         scores: [...[...scoreCounters].map(score => score.innerHTML)],
@@ -173,6 +179,7 @@ function savePageToLocalStorage() {
     }
     window.localStorage.setItem("savedObject", JSON.stringify(currentGame))
 }
+
 // Helper Functions
 function log(input) {
     console.log(input)
