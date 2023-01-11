@@ -121,7 +121,7 @@ function updateResponseToPlayer(response) {
 // Adds the token of the current player on the clicked tile
 function updateTileValue(e) {
     e.target.innerHTML = gameBoard.getAttribute("player")
-    e.target.classList.add("noInteractions")
+    e.target.classList.add("no-interactions")
 }
 
 //  Toggles entire board interactivity ('on', 'off'). If off, flag new game button to user
