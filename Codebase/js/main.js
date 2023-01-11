@@ -21,7 +21,14 @@ newGameButton.addEventListener("click", newGame)
 gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
 muteIcon.addEventListener("click", toggleMute)
 
-// Resets the board and alternates the starting player. 
+
+// Resets game scores and updatesLocalStorage
+function resetScores() {
+    [...scoreCounters].forEach(score => score.innerHTML = 0)
+    savePageToLocalStorage()
+}
+
+// Resets the board, plays an audio queue to the user and and alternates the starting player. 
 function newGame() {
     playAudio(newGameSound)
     resetBoard()
@@ -29,13 +36,8 @@ function newGame() {
     newGameButton.classList.remove("button-glow")
 }
 
-// Resets game scores and updateLocalStorage
-function resetScores() {
-    [...scoreCounters].forEach(score => score.innerHTML = 0)
-    savePageToLocalStorage()
-}
-
-// On a gametile click, executes a turn and determines the turn outcome. 
+// On a gametile click, checks it is a valid turn. 
+// Updates the tile and then determines and excustes the turn outcome. 
 function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === "")) {
         playAudio(clickedTile)
@@ -43,6 +45,12 @@ function tileClicked(e) {
         let currentBoard = [...gameTiles].map(tile => tile.innerHTML)
         performTurnOutcome(currentBoard)       
     }
+}
+
+// Toggles game sound on and off
+function toggleMute(e) {
+    muteIcon.classList.toggle("muted")
+    savePageToLocalStorage()
 }
 
 // Identifies the result of the turn and initiates corect outcome
@@ -142,16 +150,10 @@ function changePlayer(attributeSelector) {
     }
 }
 
-// Plays provided audio clip
+// Plays provided audio clip if game is not muted
 function playAudio(sound) {
     if (!muteIcon.classList.contains("muted"))
         sound.play()
-}
-
-// toggles game sound
-function toggleMute(e) {
-    muteIcon.classList.toggle("muted")
-    savePageToLocalStorage()
 }
 
 // Selects starting player and displays it to the user. Updates starting player for next game
