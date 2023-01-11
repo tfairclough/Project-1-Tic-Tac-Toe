@@ -222,6 +222,10 @@ footer {
     margin: 0;
 }
 
+.unmuted:hover {
+    transform: scale(1.1);
+}
+
 .muted {
     background-image: url("../../Images/Muted.png");
 }
