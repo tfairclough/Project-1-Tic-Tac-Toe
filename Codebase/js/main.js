@@ -10,8 +10,8 @@ const muteIcon = document.querySelector("#mute-button")
 
 // Variables
 const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-let clickedTile = new Audio("../Audio/TilePlacement.mp3")
-let newGameSound = new Audio("../Audio/newGameSound.mp3")
+let clickedTile = new Audio("Audio/TilePlacement.mp3")
+let newGameSound = new Audio("Audio/newGameSound.mp3")
 
 // Initaite Page Event Listeners
 window.addEventListener("load", retrieveLocalStorage)
