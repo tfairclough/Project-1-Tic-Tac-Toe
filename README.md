@@ -135,6 +135,7 @@ In this section I step through the build process, highlighting extracts from the
 
 
 ##  Future Improvments
+- - -
 
 - Build board in Java to avoid code duplication
 - Game can save mid-round games, not just current scores and rember whos turn it was
