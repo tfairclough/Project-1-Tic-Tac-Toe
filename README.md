@@ -136,8 +136,7 @@ In this section I step through the build process, highlighting extracts from the
 
 ##  Future Improvments
 
-- Remove the gameState String and
+- Build board in Java to avoid code duplication
 - Game can save mid-round games, not just current scores and rember whos turn it was
 - Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
-- Add a save buton to allow the player to choose whether to save the game
 - Fully implement a custom token upload. This was pesuodocoded but not implemented.  
