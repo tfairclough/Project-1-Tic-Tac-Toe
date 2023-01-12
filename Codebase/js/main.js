@@ -45,10 +45,8 @@ function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === "")) {
         playAudio(clickedTile)
         updateTileValue(e)
-
         let currentBoard = [...gameTiles].map(tile => tile.innerHTML)
         let currentGameState = returnCurrentGameState(currentBoard)
-
         if ((currentGameState === "Winner") || (currentGameState === "Tie")) {
             endGame(currentGameState, currentBoard)
         } else {
@@ -66,7 +64,7 @@ function muteButtonClicked() {
 // Initiates the end game sequence
 function endGame(gameResult, endBoard) {
     toggleBoardInteraction("off")
-    endGameAnimations(endBoard)
+    endGameAnimations(gameResult, endBoard)
     updateScores(gameResult, endBoard)
     updateResponseToPlayer(gameResult)
     savePageToLocalStorage()
@@ -86,7 +84,7 @@ function returnCurrentGameState(currentGameBoard) {
 }
 
 // Updates the ScoreCounter depedning on the result. If there is a winner it intiiates the winVisual
-function updateScores(result, endBoard) {
+function updateScores(result) {
     if (result === "Winner") {
         +document.querySelector(`#${gameBoard.getAttribute("player")}`).innerHTML++
     } else {
@@ -147,11 +145,13 @@ function changePlayer(attributeSelector) {
 }
 
 // Runs the end game animations, glows newGameBuytton, locks the board, runs the appropriate win animation
-function endGameAnimations(endBoard) {
+function endGameAnimations(gameResult, endBoard) {
     newGameButton.classList.add("button-glow")
     gameTiles.forEach(tile => { tile.classList.add("no-interactions") })
-    let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
-    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
+    if (gameResult === "Winner") {
+        let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
+        winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
+    }
 }
 
 // Plays provided audio clip if game is not muted
