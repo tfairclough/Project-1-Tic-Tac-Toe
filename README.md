@@ -133,8 +133,11 @@ In this section I step through the build process, highlighting extracts from the
 
 - Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size.
 
+
 ##  Future Improvments
 
+- Remove the gameState String and
+- Game can save mid-round games, not just current scores and rember whos turn it was
 - Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
 - Add a save buton to allow the player to choose whether to save the game
 - Fully implement a custom token upload. This was pesuodocoded but not implemented.  
