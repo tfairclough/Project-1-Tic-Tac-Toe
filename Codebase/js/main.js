@@ -45,8 +45,15 @@ function tileClicked(e) {
     if ((gameBoard.getAttribute("gamestate") === "on") && (e.target.innerHTML === "")) {
         playAudio(clickedTile)
         updateTileValue(e)
-        let currentBoard = returnCurrentGameBoardArray()
-        checkTurnResultAndPerformOutcome(currentBoard)       
+
+        let currentBoard = [...gameTiles].map(tile => tile.innerHTML)
+        let currentGameState = returnCurrentGameState(currentBoard)
+
+        if ((currentGameState === "Winner") || (currentGameState === "Tie")) {
+            endGame(currentGameState, currentBoard)
+        } else {
+            nextTurn()
+        }
     }
 }
 
@@ -56,22 +63,6 @@ function muteButtonClicked() {
     savePageToLocalStorage()
 }
 
-// Identifies the result of the turn and initiates correct outcome
-function checkTurnResultAndPerformOutcome(currentBoard) {
-   let currentGameState = returnCurrentGameState(currentBoard)
-    if ((currentGameState === "Winner") || (currentGameState === "Tie")) {
-        endGame(currentGameState, currentBoard)
-    } else {
-        nextTurn()
-    }
-}
-
-// Initiates the next turn
-function nextTurn() {
-    changePlayer('player')
-    updateResponseToPlayer(`Player ${gameBoard.getAttribute("player")} turn`)
-}
-
 // Initiates the end game sequence
 function endGame(gameResult, endBoard) {
     toggleBoardInteraction("off")
@@ -79,6 +70,12 @@ function endGame(gameResult, endBoard) {
     updateScores(gameResult, endBoard)
     updateResponseToPlayer(gameResult)
     savePageToLocalStorage()
+}
+
+// Initiates the next turn
+function nextTurn() {
+    changePlayer('player')
+    updateResponseToPlayer(`Player ${gameBoard.getAttribute("player")} turn`)
 }
 
 // Returns a string variable of the current result of the game, Won/Tie/Continue
@@ -102,11 +99,6 @@ function resetBoard() {
     toggleBoardInteraction("on")
     newGameButton.classList.remove("button-glow")
     gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("no-interactions", "win-glow")})
-}
-
-// Returns the current gameBoard as an array
-function returnCurrentGameBoardArray() {
-    return [...gameTiles].map(tile => tile.innerHTML)
 }
 
 // Returns a bool: true if the game is drawn
@@ -154,14 +146,13 @@ function changePlayer(attributeSelector) {
     }
 }
 
-// Makes the New Game Button Glow, disables entire board, animates winner if required
+// Runs the end game animations, glows newGameBuytton, locks the board, runs the appropriate win animation
 function endGameAnimations(endBoard) {
     newGameButton.classList.add("button-glow")
     gameTiles.forEach(tile => { tile.classList.add("no-interactions") })
     let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
     winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
 }
-
 
 // Plays provided audio clip if game is not muted
 function playAudio(sound) {
