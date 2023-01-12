@@ -22,13 +22,13 @@ gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
 muteIcon.addEventListener("click", toggleMute)
 
 
-// Resets game scores and updatesLocalStorage
+// Resets game scores and saves LocalStorage 
 function resetScores() {
     [...scoreCounters].forEach(score => score.innerHTML = 0)
     savePageToLocalStorage()
 }
 
-// Resets the board, plays an audio queue to the user and and alternates the starting player. 
+// Initites a new game by calling the set of required functions
 function newGame() {
     playAudio(newGameSound)
     resetBoard()
@@ -81,7 +81,7 @@ function endGame(gameResult, endBoard) {
 function returnCurrentGameState(currentGameBoard) {
     return winConditionMet(currentGameBoard) ? "Winner"
         : drawConditionMet(currentGameBoard) ? "Tie"
-        : `Continue`
+        : `Next Turn`
 }
 
 // Updates the ScoreCounter depedning on the result. If there is a winner it intiiates the winVisual

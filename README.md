@@ -57,9 +57,9 @@ A tick denotes that the requirement has been delivered in this project release:
 ## Planning
 - - -
 
-I wanted a classic design that was intuitive to navigate and easy to interact with. I produced a wireframe to help plan the HTML & CSS and wrote out pseuodcode to help structure the Javascript. 
+I wanted a classic design that was intuitive to navigate and easy to interact with. I produced a wireframe to plan the HTML & CSS and wrote out pseuodcode to help structure the Javascript. 
 
-With one week to deliver the project I focused the initial plan on the delivering the core technical requirements while ensuring the page and code could scale well to the optional extras. I reserved time for both refactoring and documentation
+With one week for the project I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. I reserved time for both refactoring and documentation
 
 ### Wireframe
 
@@ -70,3 +70,68 @@ With one week to deliver the project I focused the initial plan on the deliverin
 ![alt text](/Images/Pseudocode.png)
 
 ##  Build Process
+
+- - -
+In this section I step through the build process, highlighting key sections of the code base with some example code extracts:
+
+- Created the core elements of the HTML. Added placeholders for core game functionalities and added some basic formatting.
+
+- Created the eventlistners using array methods where appropriate:
+    1. New Game
+    2. Reset Score
+    3. Tile Click 
+    4. Mute Icon
+    5. Save/Retrieve LocalStorage
+
+    ```JavaScript
+    window.addEventListener("load", retrieveLocalStorage)
+    window.addEventListener("load", selectStartingPlayer)
+    resetScoresButton.addEventListener("click", resetScores)
+    newGameButton.addEventListener("click", newGame)
+    gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
+    muteIcon.addEventListener("click", toggleMute)
+    ```
+
+- Created the Win/Tie/Next Turn logic. The function would return true if any winCondition was met where all values were equal and not blank. Simillarly, for the draw condition we can check if no tile was empty.
+
+    ```JavaScript
+    const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+    function winConditionMet(currentGameBoard) {
+        return winConditions.some(condition => allEqualAndNotBlank([...condition.map(index => currentGameBoard[index])]))
+    }
+    ```
+
+- Controlled various game elemnents using elemnent tags to avoid global variables. This included tracking player turns and the board state to control interactivity.
+
+- Added tactical animations to improve user experience and make the interface intuitive. This included effects to clearly indicate if a sections were interactive, sounds on click, game animations to denote a winner and animations to prompt a user to start a new game.  
+
+    ```CSS
+    .button:hover {
+        transition-duration: 0.1s;
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+
+    .win-glow { 
+    animation: winning 1000ms 3;
+    }
+
+    @keyframes winning {
+        50% {font-size: 100px;}
+    }
+    ```
+
+- Saved a game file object to LocalStorage to allow a play to close and reopne the page
+    ```JavaScript
+    function savePageToLocalStorage() {
+        const currentGame = {
+            scores: [...[...scoreCounters].map(score => score.innerHTML)],
+            muted: (!muteIcon.classList.contains("muted")) ? false : true,
+        }
+        window.localStorage.setItem("savedObject", JSON.stringify(currentGame))
+    }
+    ```
+
+- Allowed the player to toggle sound using an interactive mute button that was respected on page close and re-load
+
+- Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size
