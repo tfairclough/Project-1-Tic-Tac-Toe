@@ -94,7 +94,7 @@ function updateScores(result, endBoard) {
     }
 }
 
-// Identifies the three winning tiles and makes them flash
+// Identifies the index of three winning tiles and makes them flash
 function displayWinVisual(endBoard) {
     let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
     winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
