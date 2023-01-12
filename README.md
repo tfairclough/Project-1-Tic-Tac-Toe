@@ -72,11 +72,11 @@ With one week for the project I focused on delivering the core technical require
 ##  Build Process
 
 - - -
-In this section I step through the build process, highlighting key sections of the code base with some example code extracts:
+In this section I step through the build process, with highlighting extracts from the code base:
 
 - Created the core elements of the HTML. Added placeholders for core game functionalities and added some basic formatting.
 
-- Created the eventlistners using array methods where appropriate:
+- Added EventListners, using array methods where appropriate, to allow the player to interact wih the game:
     1. New Game
     2. Reset Score
     3. Tile Click 
@@ -84,15 +84,10 @@ In this section I step through the build process, highlighting key sections of t
     5. Save/Retrieve LocalStorage
 
     ```JavaScript
-    window.addEventListener("load", retrieveLocalStorage)
-    window.addEventListener("load", selectStartingPlayer)
-    resetScoresButton.addEventListener("click", resetScores)
-    newGameButton.addEventListener("click", newGame)
     gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
-    muteIcon.addEventListener("click", toggleMute)
     ```
 
-- Created the Win/Tie/Next Turn logic. The function would return true if any winCondition was met where all values were equal and not blank. Simillarly, for the draw condition we can check if no tile was empty.
+- Created the game result logic. The function would return true if any winCondition was met where all values were equal and not blank. Simillarly, for the draw condition we can check if no tile was empty.
 
     ```JavaScript
     const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -101,9 +96,11 @@ In this section I step through the build process, highlighting key sections of t
     }
     ```
 
-- Controlled various game elemnents using elemnent tags to avoid global variables. This included tracking player turns and the board state to control interactivity.
+- Controlled various game elemnents using element tags to avoid global variables. This included tracking player turns and board.
 
-- Added tactical animations to improve user experience and make the interface intuitive. This included effects to clearly indicate if a sections were interactive, sounds on click, game animations to denote a winner and animations to prompt a user to start a new game.  
+- Added styling to the board using a classic look including shadows to give depth.
+
+- Added tactical animations to improve user experience and make the interface intuitive i.e. effects to clearly indicate if a section was interactive, sound on click, winner animations and animation prompts(start a new game). 
 
     ```CSS
     .button:hover {
@@ -121,7 +118,7 @@ In this section I step through the build process, highlighting key sections of t
     }
     ```
 
-- Saved a game file object to LocalStorage to allow a play to close and reopne the page
+- Saved a game file object to LocalStorage to allow a play to close and reopen the page. On load this savefile was restored
     ```JavaScript
     function savePageToLocalStorage() {
         const currentGame = {
@@ -135,3 +132,9 @@ In this section I step through the build process, highlighting key sections of t
 - Allowed the player to toggle sound using an interactive mute button that was respected on page close and re-load
 
 - Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size
+
+##  Future Improvments
+
+- Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
+- Add a save buton to allow the player to choose whether to save the game
+- Fully implement a custom token upload. This was pesuodocoded but not implemented.  
