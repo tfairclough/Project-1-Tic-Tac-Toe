@@ -27,10 +27,9 @@ function initialiseEventListeners() {
     muteIcon.addEventListener("click", muteButtonClicked)
 }
 
-
 // Resets game scores and saves LocalStorage 
 function resetButtonClicked() {
-    resetScores()
+    [...scoreCounters].forEach(score => score.innerHTML = 0)
     savePageToLocalStorage()
 }
 
@@ -38,10 +37,8 @@ function resetButtonClicked() {
 function newGameButtonClicked() {
     playAudio(newGameSound)
     resetBoard()
-    stopNewGameButtonAnimation()
     selectStartingPlayer()
 }
-
 
 // On a gametile click, checks it is a valid turn and initiates the outcome functions
 function tileClicked(e) {
@@ -58,8 +55,6 @@ function muteButtonClicked() {
     toggleMute()
     savePageToLocalStorage()
 }
-
-
 
 // Identifies the result of the turn and initiates correct outcome
 function checkTurnResultAndPerformOutcome(currentBoard) {
@@ -80,8 +75,7 @@ function nextTurn() {
 // Initiates the end game sequence
 function endGame(gameResult, endBoard) {
     toggleBoardInteraction("off")
-    startNewGameButtonAnimation()
-    stopTileAnimations()
+    endGameAnimations(endBoard)
     updateScores(gameResult, endBoard)
     updateResponseToPlayer(gameResult)
     savePageToLocalStorage()
@@ -97,23 +91,17 @@ function returnCurrentGameState(currentGameBoard) {
 // Updates the ScoreCounter depedning on the result. If there is a winner it intiiates the winVisual
 function updateScores(result, endBoard) {
     if (result === "Winner") {
-        displayWinVisual(endBoard)
         +document.querySelector(`#${gameBoard.getAttribute("player")}`).innerHTML++
     } else {
         +tieCounter.innerHTML++
     }
 }
 
-// Identifies the index of three winning tiles and makes them flash
-function displayWinVisual(endBoard) {
-    let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
-    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
-}
-
-// Removes all win animations from the tiles and allows players to interact with the board again 
+// Resets board and animations
 function resetBoard() {
-    gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("no-interactions", "win-glow")})
     toggleBoardInteraction("on")
+    newGameButton.classList.remove("button-glow")
+    gameTiles.forEach(tile => {tile.innerHTML = ""; tile.classList.remove("no-interactions", "win-glow")})
 }
 
 // Returns the current gameBoard as an array
@@ -166,25 +154,14 @@ function changePlayer(attributeSelector) {
     }
 }
 
-// Remove glow from the NewGame Button
-function stopNewGameButtonAnimation() {
-    newGameButton.classList.remove("button-glow")
-}
-
-// Resets scores to zero
-function resetScores() {
-    [...scoreCounters].forEach(score => score.innerHTML = 0)
-}
-
-// Makes the New Game Button Glow 
-function startNewGameButtonAnimation() {
+// Makes the New Game Button Glow, disables entire board, animates winner if required
+function endGameAnimations(endBoard) {
     newGameButton.classList.add("button-glow")
+    gameTiles.forEach(tile => { tile.classList.add("no-interactions") })
+    let winningIndex = winConditions.findIndex(winArray => allEqualAndNotBlank([...winArray.map(index => endBoard[index])]))
+    winConditions[winningIndex].forEach(winningTile => document.querySelector(`#tile${winningTile}`).classList.toggle("win-glow"))
 }
 
-// Disables gametile animations
-function stopTileAnimations() {
-    gameTiles.forEach(tile => { tile.classList.add("no-interactions") })
-}
 
 // Plays provided audio clip if game is not muted
 function playAudio(sound) {
@@ -205,7 +182,7 @@ function retrieveLocalStorage() {
     const retrievedGame = JSON.parse(window.localStorage.getItem('savedObject'));
     [...scoreCounters].forEach( (counter, i) => counter.innerHTML = retrievedGame['scores'][i])
     if (retrievedGame['muted']) {
-        muteButtonClicked()
+        toggleMute()
     }
 }
 
