@@ -72,7 +72,7 @@ With one week for the project I focused on delivering the core technical require
 ##  Build Process
 
 - - -
-In this section I step through the build process, with highlighting extracts from the code base:
+In this section I step through the build process, highlighting extracts from the code base:
 
 - Created the core elements of the HTML. Added placeholders for core game functionalities and added some basic formatting.
 
@@ -87,7 +87,7 @@ In this section I step through the build process, with highlighting extracts fro
     gameTiles.forEach(tile => tile.addEventListener("click", tileClicked))
     ```
 
-- Created the game result logic. The function would return true if any winCondition was met where all values were equal and not blank. Simillarly, for the draw condition we can check if no tile was empty.
+- Created the game result logic. The function would return true if any winCondition was met when all values were equal and not blank. Simillarly, for the draw condition we can check if no tile was empty.
 
     ```JavaScript
     const winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -98,7 +98,7 @@ In this section I step through the build process, with highlighting extracts fro
 
 - Controlled various game elemnents using element tags to avoid global variables. This included tracking player turns and board.
 
-- Added styling to the board using a classic look including shadows to give depth.
+- Added CSS styling to the board using a classic look including shadows to give depth and a custom frame around the board.
 
 - Added tactical animations to improve user experience and make the interface intuitive i.e. effects to clearly indicate if a section was interactive, sound on click, winner animations and animation prompts(start a new game). 
 
@@ -118,7 +118,7 @@ In this section I step through the build process, with highlighting extracts fro
     }
     ```
 
-- Saved a game file object to LocalStorage to allow a play to close and reopen the page. On load this savefile was restored
+- Saved a game file object to LocalStorage to allow a play to close and reopen the page. On load this savefile was restored.
     ```JavaScript
     function savePageToLocalStorage() {
         const currentGame = {
@@ -129,9 +129,9 @@ In this section I step through the build process, with highlighting extracts fro
     }
     ```
 
-- Allowed the player to toggle sound using an interactive mute button that was respected on page close and re-load
+- Allowed the player to toggle sound using an interactive mute button that was respected on page close and re-load.
 
-- Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size
+- Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size.
 
 ##  Future Improvments
 
