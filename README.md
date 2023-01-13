@@ -137,12 +137,12 @@ In this section I step through the build process, highlighting extracts from the
 ## Challenges
 - - -
 
-- Structuring a more complex script. 
+- Structuring a more complex script: <br>
     I paid particular attention to this throughout the project. Wherever possible I would try to refactor code to make it succint and DRY. I tried to keep functions under 5 lines and made sure that naming conventions were consistent and descriptive. On occassions I used global varibales which is bad practice. On reflection I should have made an object to contain information to be passed into functions.
 
     Secondly I was having to create mutiple layers of functions due to my logic structure.  Although it kept individual functions clean, it was a trade off on ease of following the overall logic path. 
 
-- Using HTML tags to track varibales.
+- Using HTML tags to track varibales: <br>
     This is the first project I have used HTML element tags to track variables in order to keep the code as succint. Although it worked, I would like to read up on best practices as I don't think I used them as efficiently as I could have. 
 
 
