@@ -150,6 +150,6 @@ In this section I step through the build process, highlighting extracts from the
 - - -
 
 - Generate the board in JavaScript to avoid code duplication (code written but not released)
-- Game can save mid-round games, not just current scores and rember whos turn it was
+- Game can save mid-round games and remember whos turn it was
 - Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
 - Fully implement a custom token upload. This was pesudocoded but not implemented.  
