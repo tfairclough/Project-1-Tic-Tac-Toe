@@ -57,7 +57,7 @@ A tick denotes that the requirement has been delivered in this project release:
 ## Planning
 - - -
 
-I wanted a classic design that was intuitive to navigate and easy to interact with. I produced a wireframe to plan the HTML & CSS and wrote out pseuodcode to help structure the Javascript. 
+I wanted a classic design that was intuitive to navigate and easy to interact with. I produced a wireframe to plan the HTML & CSS and wrote out pseudocode to help structure the Javascript. 
 
 With one week for the project I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. I reserved time for both refactoring and documentation
 
@@ -134,10 +134,20 @@ In this section I step through the build process, highlighting extracts from the
 - Made the page fully responive to screen sizes and mobile screens using adpating the layout below a minimum screen size.
 
 
+## Challenges
+- - -
+
+- Structuring a more complex script. 
+    I paid particular attention to this throughout the project. Wherever possible I would try to refactor code to make it succint and DRY. I tried to keep functions under 5 lines and made sure that naming conventions were consistent and descriptive. On occassions I used global varibales which is bad practice. On reflection I should have made an object to contain information to be passed into functions
+
+- Using HTML tags to track varibales.
+    This is the first project I have used tags to track varibales in order to keep the code as succint as poissible and avoid unnecessary varibales. Although it worked, I would like to read up on best practices as I don't think I used them as efficiently as I could have  
+
+
 ##  Future Improvments
 - - -
 
-- Build board in Java to avoid code duplication
+- Generate the board in JavaScript to avoid code duplication (code written but not released)
 - Game can save mid-round games, not just current scores and rember whos turn it was
 - Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
-- Fully implement a custom token upload. This was pesuodocoded but not implemented.  
+- Fully implement a custom token upload. This was pesudocoded but not implemented.  
