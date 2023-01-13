@@ -142,7 +142,7 @@ In this section I step through the build process, highlighting extracts from the
 
     Secondly I was having to create mutiple layers of functions due to my logic structure.  Although it kept individual functions clean, it was a trade off on ease of following the overall logic path. 
 
-- Using HTML tags to track varibales: <br>
+- Using HTML tags to track variables: <br>
     This is the first project I have used HTML element tags to track variables in order to keep the code as succint. Although it worked, I would like to read up on best practices as I don't think I used them as efficiently as I could have. 
 
 
@@ -150,6 +150,6 @@ In this section I step through the build process, highlighting extracts from the
 - - -
 
 - Generate the board in JavaScript to avoid code duplication (code written but not released)
-- Game can save mid-round games and remember whos turn it was
+- Game can save mid-round and remember whos turn it was
 - Add an AI to allow a player to play against the computer. Started the logic using an API move suggestor
 - Fully implement a custom token upload. This was pesudocoded but not implemented.  
