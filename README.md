@@ -59,7 +59,7 @@ A tick denotes that the requirement has been delivered in this project release:
 
 I wanted a classic design that was intuitive to navigate and easy to interact with. I produced a wireframe to plan the HTML & CSS and wrote out pseudocode to help structure the Javascript. 
 
-With one week for the project I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. I reserved time for both refactoring and documentation
+With one week for the project I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. I reserved time for both refactoring and documentation.
 
 ### Wireframe
 
